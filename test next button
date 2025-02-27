@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video con Temporizador</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        iframe {
+            width: 80%;
+            height: 315px;
+            max-width: 560px;
+        }
+
+        #nextButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Por favor, mira el video completo</h2>
+
+    <iframe src="https://player.vimeo.com/video/1059912308?autoplay=1"
+        frameborder="0" allowfullscreen>
+    </iframe>
+
+    <button id="nextButton" onclick="avanzar()">Next</button>
+
+    <script>
+        setTimeout(function() {
+            let nextButton = document.getElementById("nextButton");
+            nextButton.style.display = "block";
+            nextButton.style.cursor = "pointer";
+        }, 120000); // 120 segundos (2 minutos)
+
+        function avanzar() {
+            window.parent.postMessage("next", "*");
+        }
+    </script>
+
+</body>
+</html>
